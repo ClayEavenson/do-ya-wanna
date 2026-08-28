@@ -1,5 +1,9 @@
-// Server component
-export default function Problem() {
+// WhyThis — soft-white band (default bg)
+// Kicker: WHY THIS?
+// Right col: minimal white teaser card — lock icon + "DO YA WANNA?" + "You'll know soon."
+// No functionality shown.
+
+export default function WhyThis() {
   return (
     <section
       style={{
@@ -14,7 +18,7 @@ export default function Problem() {
         alignItems: "center",
       }}
     >
-      {/* ── Left: problem framing ── */}
+      {/* ── Left: copy ── */}
       <div>
         <p
           style={{
@@ -25,7 +29,7 @@ export default function Problem() {
             color: "#697278",
           }}
         >
-          THE PROBLEM
+          WHY THIS?
         </p>
         <h2
           style={{
@@ -34,158 +38,76 @@ export default function Problem() {
             lineHeight: 1.15,
             fontWeight: 900,
             letterSpacing: "-0.5px",
-          }}
+            textWrap: "pretty",
+          } as React.CSSProperties}
         >
-          Simple questions get lost. Repeated questions become chores.
+          Some ideas are hiding in plain sight.
         </h2>
         <p
           style={{
-            margin: "0 0 26px",
+            margin: 0,
             fontSize: "clamp(15px,4vw,17px)",
             lineHeight: 1.55,
             color: "#697278",
             maxWidth: "46ch",
           }}
         >
-          Whether you&apos;re asking one person, the whole family, or the same
-          group every Thursday, Do Ya Wanna? keeps the question—and
-          everyone&apos;s answer—clear.
+          We noticed something about a question nearly everyone asks. It was
+          simple, familiar, and far more powerful than it looked. So we started
+          building.
         </p>
-
-        {/* Chat bubbles */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "8px",
-            maxWidth: "400px",
-          }}
-        >
-          {[
-            { text: "Anybody want to play Saturday?", sent: false },
-            { text: "Maybe. What time are you thinking?", sent: true },
-            { text: "wait who\u2019s in so far?", sent: false },
-            { text: "So\u2026 are we doing this?", sent: true },
-          ].map(({ text, sent }) => (
-            <span
-              key={text}
-              style={{
-                alignSelf: sent ? "flex-end" : "flex-start",
-                background: sent ? "#171B1E" : "#FFFFFF",
-                color: sent ? "#F7F8F4" : "#171B1E",
-                border: sent ? "none" : "1px solid #D9DDD5",
-                borderRadius: sent
-                  ? "16px 16px 4px 16px"
-                  : "16px 16px 16px 4px",
-                padding: "10px 15px",
-                fontSize: "14.5px",
-                maxWidth: "80%",
-              }}
-            >
-              {text}
-            </span>
-          ))}
-          <p
-            style={{
-              margin: "10px 0 0",
-              fontSize: "13.5px",
-              fontWeight: 600,
-              color: "#697278",
-            }}
-          >
-            14 messages later, nobody knows the answer.
-          </p>
-        </div>
       </div>
 
-      {/* ── Right: the Wanna solution ── */}
+      {/* ── Right: minimal teaser card ── */}
       <div style={{ minWidth: 0 }}>
-        <p
-          style={{
-            margin: "0 0 12px",
-            fontSize: "12px",
-            fontWeight: 800,
-            letterSpacing: "1.8px",
-            color: "#697278",
-          }}
-        >
-          THE SAME ASK AS A WANNA
-        </p>
         <div
           style={{
             background: "#FFFFFF",
             border: "1px solid #D9DDD5",
             borderRadius: "20px",
-            padding: "clamp(16px,4vw,22px)",
+            padding: "clamp(28px,6vw,40px)",
             maxWidth: "440px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: "14px",
           }}
         >
+          {/* Lucide-style lock — outline, 2px stroke, no fill */}
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#171B1E"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+
           <p
             style={{
-              margin: "0 0 6px",
-              fontSize: "11px",
-              fontWeight: 800,
-              letterSpacing: "1.4px",
+              margin: 0,
+              fontSize: "clamp(22px,5.5vw,28px)",
+              fontWeight: 900,
+              letterSpacing: "-0.4px",
+            }}
+          >
+            DO YA WANNA?
+          </p>
+          <p
+            style={{
+              margin: 0,
+              fontSize: "15.5px",
+              fontWeight: 600,
               color: "#697278",
             }}
           >
-            FROM YOU · TO SATURDAY CREW
-          </p>
-          <p
-            style={{
-              margin: "0 0 18px",
-              fontSize: "clamp(19px,5vw,22px)",
-              fontWeight: 800,
-              letterSpacing: "-0.2px",
-            }}
-          >
-            Do ya wanna play golf Saturday?
-          </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            {[
-              { name: "Marcus", answer: "YES", lime: true },
-              { name: "Jess", answer: "YES", lime: true },
-              { name: "Sam", answer: "MAYBE", lime: false },
-            ].map(({ name, answer, lime }) => (
-              <div
-                key={name}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  background: "#F7F8F4",
-                  border: "1px solid #D9DDD5",
-                  borderRadius: "12px",
-                  padding: "10px 14px",
-                }}
-              >
-                <span style={{ fontSize: "14px", fontWeight: 600, flex: 1 }}>
-                  {name}
-                </span>
-                <span
-                  style={{
-                    background: lime ? "#B8FF3D" : "transparent",
-                    border: lime ? "none" : "1px solid #D9DDD5",
-                    color: lime ? "#171B1E" : "#697278",
-                    fontSize: "10.5px",
-                    fontWeight: 800,
-                    padding: "4px 9px",
-                    borderRadius: "999px",
-                  }}
-                >
-                  {answer}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p
-            style={{
-              margin: "16px 0 0",
-              fontSize: "13.5px",
-              fontWeight: 700,
-            }}
-          >
-            2 YES · 1 MAYBE — answered in 4 minutes.
+            You&apos;ll know soon.
           </p>
         </div>
       </div>

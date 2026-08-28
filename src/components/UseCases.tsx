@@ -1,24 +1,24 @@
-// Server component — CSS-only marquee, no JS needed
-// overflow:hidden on the section prevents horizontal scrollbars
+// ComingSoonMarquee — teaser chip content
+// NO specific activities (no golf, dates, workouts, etc.)
+// Only abstract temporal/relational references
 
 const ROW_1 = [
-  "Do ya wanna play golf Saturday?",
-  "Do ya wanna grab pizza tonight?",
-  "Do ya wanna plan a date night?",
-  "Do ya wanna meet at the lake this weekend?",
+  "The next time someone asks",
+  "That thing you're planning",
+  "This weekend",
+  "Later tonight",
 ];
 
 const ROW_2 = [
-  "Do ya wanna work out tomorrow?",
-  "Do ya wanna watch the game?",
-  "Do ya wanna make this a weekly thing?",
-  "Do ya wanna go out Friday night?",
+  "That person you're thinking about",
+  "When the moment is right",
+  "You'll see",
+  "Soon",
 ];
 
-function pill(text: string, key: string | number) {
+function Pill({ text }: { text: string }) {
   return (
     <span
-      key={key}
       style={{
         background: "#FFFFFF",
         border: "1px solid #D9DDD5",
@@ -36,8 +36,7 @@ function pill(text: string, key: string | number) {
   );
 }
 
-export default function UseCases() {
-  // Duplicate each row once for seamless CSS loop
+export default function ComingSoonMarquee() {
   const row1 = [...ROW_1, ...ROW_1];
   const row2 = [...ROW_2, ...ROW_2];
 
@@ -47,7 +46,8 @@ export default function UseCases() {
         style={{
           maxWidth: "1160px",
           margin: "0 auto",
-          padding: "0 clamp(20px,4.5vw,32px) clamp(24px,5vw,36px)",
+          padding:
+            "0 clamp(20px,4.5vw,32px) clamp(24px,5vw,36px)",
         }}
       >
         <p
@@ -59,7 +59,7 @@ export default function UseCases() {
             color: "#697278",
           }}
         >
-          USE CASES
+          COMING SOON
         </p>
         <h2
           style={{
@@ -67,9 +67,10 @@ export default function UseCases() {
             fontSize: "clamp(26px,6.4vw,34px)",
             fontWeight: 900,
             letterSpacing: "-0.5px",
-          }}
+            textWrap: "pretty",
+          } as React.CSSProperties}
         >
-          One behavior. Dozens of everyday moments.
+          You&apos;re going to use it more than you think.
         </h2>
       </div>
 
@@ -91,7 +92,9 @@ export default function UseCases() {
             animation: "dyw-marq 42s linear infinite",
           }}
         >
-          {row1.map((t, i) => pill(t, i))}
+          {row1.map((t, i) => (
+            <Pill text={t} key={i} />
+          ))}
         </div>
 
         {/* Row 2 — scrolls right */}
@@ -104,7 +107,9 @@ export default function UseCases() {
             animation: "dyw-marq2 48s linear infinite",
           }}
         >
-          {row2.map((t, i) => pill(t, i))}
+          {row2.map((t, i) => (
+            <Pill text={t} key={i} />
+          ))}
         </div>
       </div>
     </section>

@@ -1,353 +1,158 @@
 import Image from "next/image";
 
 /**
- * HTML/CSS phone demo — Android-style device frame built in React.
- * Shows: branded app bar, individual Wanna card (FROM PAIGE),
- * group row, recurring row, and lime FAB.
+ * TeaserPhone — device frame containing ONLY the teaser screen.
+ * Near-black (#0B0D0E) background. Centered brand column.
  *
- * Brand rules:
- * - App bar uses app-icon-512.png (dark icon on light bg) ✓
- * - No bare lime ? here (light background) ✓
- * - "Do Ya Wanna?" spelled correctly ✓
+ * SECRECY RULE: No buttons, no questions, no answers, no interface elements.
+ * Only: icon + name, lime question mark, two lines of teaser copy.
+ *
+ * The bare lime ? (question-mark-lime.png) IS allowed here — dark background. ✓
  */
-export default function PhoneDemo() {
+export default function TeaserPhone() {
   return (
+    // Outer device shell — white frame with shadow, matching reference screenshot
     <div
-      aria-label="App preview"
+      aria-label="App teaser: Do Ya Wanna? — Something new is coming."
+      role="img"
       style={{
-        width: "min(100%, 380px)",
+        width: "min(100%, 400px)",
         background: "#FFFFFF",
-        borderRadius: "36px",
-        border: "2px solid #D9DDD5",
+        borderRadius: "44px",
+        border: "1px solid #D9DDD5",
         overflow: "hidden",
-        boxShadow: "0 4px 24px rgba(11,13,14,0.10)",
+        boxShadow: "0 12px 48px rgba(11,13,14,0.16), 0 2px 8px rgba(11,13,14,0.08)",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      {/* ── App bar ── */}
+      {/* ── Status bar (minimal — just visual chrome) ── */}
       <div
+        aria-hidden="true"
         style={{
-          background: "#F7F8F4",
-          borderBottom: "1px solid #D9DDD5",
-          padding: "16px 16px 14px",
+          background: "#0B0D0E",
+          padding: "12px 22px 8px",
           display: "flex",
           alignItems: "center",
-          gap: "8px",
+          justifyContent: "space-between",
+          fontSize: "11px",
+          fontWeight: 600,
+          color: "#F7F8F4",
         }}
       >
-        <Image
-          src="/brand/app-icon-512.png"
-          alt=""
-          width={26}
-          height={26}
-          aria-hidden="true"
-        />
-        <span
-          style={{ fontSize: "15px", fontWeight: 800, letterSpacing: "-0.2px" }}
-        >
-          Do Ya Wanna?
-        </span>
-        <span
-          style={{
-            marginLeft: "auto",
-            background: "#B8FF3D",
-            color: "#171B1E",
-            fontSize: "10px",
-            fontWeight: 800,
-            letterSpacing: "0.8px",
-            padding: "4px 9px",
-            borderRadius: "999px",
-          }}
-        >
-          1 NEW
-        </span>
+        <span>9:30</span>
+        {/* Signal / wifi / battery */}
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          {/* Signal */}
+          <svg width="16" height="11" viewBox="0 0 16 11" fill="#F7F8F4" aria-hidden="true">
+            <rect x="0" y="7" width="3" height="4" rx="0.5" />
+            <rect x="4.5" y="4.5" width="3" height="6.5" rx="0.5" />
+            <rect x="9" y="2" width="3" height="9" rx="0.5" />
+            <rect x="13.5" y="0" width="2.5" height="11" rx="0.5" opacity="0.3" />
+          </svg>
+          {/* WiFi */}
+          <svg width="14" height="11" viewBox="0 0 24 18" fill="#F7F8F4" aria-hidden="true">
+            <path d="M12 14a2 2 0 110 4 2 2 0 010-4zm0-5c2.4 0 4.6.9 6.2 2.4l1.8-1.8A11.9 11.9 0 0012 7C9.1 7 6.4 8.1 4 9.6l1.8 1.8C7.4 9.9 9.6 9 12 9zm0-6c3.9 0 7.4 1.5 10 4l1.8-1.8C20.9 2.4 16.8.5 12 .5S3.1 2.4.2 5.2L2 7c2.6-2.5 6.1-4 10-4z" />
+          </svg>
+          {/* Battery */}
+          <svg width="20" height="11" viewBox="0 0 20 11" fill="none" aria-hidden="true">
+            <rect x="0.5" y="0.5" width="17" height="10" rx="2.5" stroke="#F7F8F4" strokeWidth="1" />
+            <rect x="2" y="2" width="12" height="7" rx="1.5" fill="#F7F8F4" />
+            <path d="M18.5 3.5v4a1.5 1.5 0 000-4z" fill="#F7F8F4" />
+          </svg>
+        </div>
       </div>
 
-      {/* ── Feed ── */}
+      {/* ── Teaser screen — near-black, centred column ── */}
       <div
         style={{
-          background: "#F7F8F4",
-          padding: "14px",
+          background: "#0B0D0E",
+          minHeight: "480px",
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
-          position: "relative",
-          minHeight: "440px",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "22px",
+          padding: "clamp(28px,6vw,40px) 28px",
+          textAlign: "center",
+          boxSizing: "border-box",
         }}
       >
-        {/* Individual Wanna card */}
-        <div
-          style={{
-            background: "#FFFFFF",
-            border: "1px solid #D9DDD5",
-            borderRadius: "20px",
-            padding: "16px",
-          }}
-        >
-          {/* Header row */}
-          <div
+        {/* Brand row */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <Image
+            src="/brand/app-icon-512.png"
+            alt=""
+            aria-hidden="true"
+            width={30}
+            height={30}
+          />
+          <span
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "6px",
-              flexWrap: "wrap",
-              marginBottom: "8px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "10.5px",
-                fontWeight: 800,
-                letterSpacing: "1.2px",
-                color: "#697278",
-              }}
-            >
-              FROM PAIGE
-            </span>
-            <span
-              style={{
-                marginLeft: "auto",
-                border: "1px solid #D9DDD5",
-                fontSize: "9px",
-                fontWeight: 800,
-                letterSpacing: "0.6px",
-                padding: "3px 7px",
-                borderRadius: "999px",
-                color: "#697278",
-              }}
-            >
-              PERSON
-            </span>
-            <span
-              style={{
-                border: "1px solid #D9DDD5",
-                fontSize: "9px",
-                fontWeight: 800,
-                letterSpacing: "0.6px",
-                padding: "3px 7px",
-                borderRadius: "999px",
-                color: "#697278",
-              }}
-            >
-              ONE TIME
-            </span>
-          </div>
-
-          {/* Question */}
-          <p
-            style={{
-              margin: "0 0 14px",
-              fontSize: "20px",
-              lineHeight: 1.25,
+              fontSize: "16px",
               fontWeight: 800,
               letterSpacing: "-0.2px",
+              color: "#F7F8F4",
             }}
           >
-            Do ya wanna go out Friday night?
-          </p>
+            Do Ya Wanna?
+          </span>
+        </div>
 
-          {/* Answer grid: 4 preset options, sender-defined only */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "8px",
-            }}
-          >
-            <span
-              style={{
-                textAlign: "center",
-                padding: "12px 4px",
-                borderRadius: "12px",
-                background: "#B8FF3D",
-                fontSize: "13.5px",
-                fontWeight: 800,
-                color: "#171B1E",
-              }}
-            >
-              YES
-            </span>
-            <span
-              style={{
-                textAlign: "center",
-                padding: "12px 4px",
-                borderRadius: "12px",
-                background: "#FFFFFF",
-                border: "1px solid #D9DDD5",
-                fontSize: "13.5px",
-                fontWeight: 700,
-              }}
-            >
-              NO
-            </span>
-            <span
-              style={{
-                textAlign: "center",
-                padding: "12px 4px",
-                borderRadius: "12px",
-                background: "#FFFFFF",
-                border: "1px solid #D9DDD5",
-                fontSize: "13.5px",
-                fontWeight: 700,
-              }}
-            >
-              MAYBE
-            </span>
-            <span
-              style={{
-                textAlign: "center",
-                padding: "12px 4px",
-                borderRadius: "12px",
-                background: "#FFFFFF",
-                border: "1px solid #D9DDD5",
-                fontSize: "13px",
-                fontWeight: 700,
-              }}
-            >
-              LET&apos;S TALK ABOUT IT
-            </span>
-          </div>
+        {/* Bare lime ? — ALLOWED on this dark background ✓ */}
+        <Image
+          src="/brand/question-mark-lime.png"
+          alt="?"
+          width={119}
+          height={150}
+          style={{ height: "190px", width: "auto" }}
+        />
 
-          {/* Sender's ONE optional custom response — recipients cannot add answers */}
+        {/* Teaser copy — NO interface, NO mechanics */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <p
             style={{
-              margin: "12px 0 6px",
-              fontSize: "9.5px",
+              margin: 0,
+              fontSize: "20px",
               fontWeight: 800,
-              letterSpacing: "1px",
-              color: "#697278",
+              letterSpacing: "-0.2px",
+              color: "#F7F8F4",
             }}
           >
-            PAIGE ADDED ONE OPTIONAL RESPONSE
+            Something new is coming.
           </p>
-          <span
+          <p
             style={{
-              display: "block",
-              textAlign: "center",
-              padding: "12px 4px",
-              borderRadius: "12px",
-              background: "#F7F8F4",
-              border: "1px solid #B8FF3D",
-              fontSize: "13.5px",
-              fontWeight: 700,
+              margin: 0,
+              fontSize: "14px",
+              fontWeight: 500,
+              color: "#9AA29F",
             }}
           >
-            MOVIE NIGHT INSTEAD?
-          </span>
+            Private beta access opens soon.
+          </p>
         </div>
+      </div>
 
-        {/* Group Wanna row */}
+      {/* ── Home indicator ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          background: "#0B0D0E",
+          padding: "10px 0 16px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <div
           style={{
-            background: "#FFFFFF",
-            border: "1px solid #D9DDD5",
-            borderRadius: "16px",
-            padding: "12px 14px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "5px",
+            width: "120px",
+            height: "4px",
+            background: "#F7F8F4",
+            borderRadius: "999px",
+            opacity: 0.25,
           }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <span
-              style={{ fontSize: "13.5px", fontWeight: 600, flex: 1, minWidth: 0 }}
-            >
-              Do ya wanna play golf Saturday?
-            </span>
-            <span
-              style={{
-                border: "1px solid #D9DDD5",
-                fontSize: "9px",
-                fontWeight: 800,
-                letterSpacing: "0.6px",
-                padding: "3px 7px",
-                borderRadius: "999px",
-                color: "#697278",
-                flexShrink: 0,
-              }}
-            >
-              GROUP
-            </span>
-          </div>
-          <span
-            style={{
-              fontSize: "10px",
-              fontWeight: 800,
-              letterSpacing: "0.5px",
-              color: "#697278",
-            }}
-          >
-            SATURDAY CREW · 3 PEOPLE ANSWERED · 2 YES · 1 MAYBE
-          </span>
-        </div>
-
-        {/* Recurring Wanna row */}
-        <div
-          style={{
-            background: "#FFFFFF",
-            border: "1px solid #D9DDD5",
-            borderRadius: "16px",
-            padding: "12px 14px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "5px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-            <span
-              style={{ fontSize: "13.5px", fontWeight: 600, flex: 1, minWidth: 0 }}
-            >
-              Do ya wanna work out tomorrow?
-            </span>
-            <span
-              style={{
-                background: "#B8FF3D",
-                color: "#171B1E",
-                fontSize: "9px",
-                fontWeight: 800,
-                letterSpacing: "0.6px",
-                padding: "3px 7px",
-                borderRadius: "999px",
-                flexShrink: 0,
-              }}
-            >
-              REPEATS
-            </span>
-          </div>
-          <span
-            style={{
-              fontSize: "10px",
-              fontWeight: 800,
-              letterSpacing: "0.5px",
-              color: "#697278",
-            }}
-          >
-            EVERY MON · WED · FRI AT 7:00 AM
-          </span>
-        </div>
-
-        {/* Lime FAB */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            right: "14px",
-            bottom: "14px",
-            width: "52px",
-            height: "52px",
-            background: "#B8FF3D",
-            borderRadius: "16px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "26px",
-            fontWeight: 800,
-            color: "#171B1E",
-            boxShadow: "0 2px 8px rgba(11,13,14,0.18)",
-            userSelect: "none",
-          }}
-        >
-          +
-        </div>
+        />
       </div>
     </div>
   );

@@ -91,3 +91,23 @@ textarea::placeholder {
 .marquee-row:hover {
   animation-play-state: paused;
 }
+
+/* ── Respect prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row {
+    animation: none !important;
+  }
+}
+
+/* ── Visually hidden (accessible labels) ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

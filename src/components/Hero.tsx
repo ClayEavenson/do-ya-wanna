@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import PhoneDemo from "./PhoneDemo";
 
-// ── Apple & Android SVG paths (platform-neutral, shown equally) ──────────────
 const AppleSVG = () => (
   <svg
     width="15"
@@ -31,10 +30,23 @@ const AndroidSVG = () => (
   </svg>
 );
 
+const inputStyle: React.CSSProperties = {
+  padding: "14px 15px",
+  border: "1px solid #D9DDD5",
+  borderRadius: "12px",
+  background: "#F7F8F4",
+  font: "500 15px var(--font-archivo), sans-serif",
+  color: "#171B1E",
+  minWidth: 0,
+  minHeight: "44px",
+  width: "100%",
+  boxSizing: "border-box",
+};
+
 export default function Hero() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [hp, setHp] = useState(""); // honeypot field — hidden from real users
+  const [hp, setHp] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [successName, setSuccessName] = useState("");
   const [successEmail, setSuccessEmail] = useState("");
@@ -43,11 +55,9 @@ export default function Hero() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Client-side honeypot check
-    if (hp) return;
+    if (hp) return; // honeypot
     setLoading(true);
     setError("");
-
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST",
@@ -69,17 +79,6 @@ export default function Hero() {
     }
   }
 
-  const inputStyle: React.CSSProperties = {
-    padding: "14px 15px",
-    border: "1px solid #D9DDD5",
-    borderRadius: "12px",
-    background: "#F7F8F4",
-    font: "500 15px var(--font-archivo), sans-serif",
-    color: "#171B1E",
-    minWidth: 0,
-    minHeight: "44px", // touch target
-  };
-
   return (
     <section
       style={{
@@ -95,8 +94,20 @@ export default function Hero() {
     >
       {/* ── Left column ── */}
       <div>
-        {/* Brand row: wordmark-words-only + app-icon as punctuation
-            NEVER the bare lime ? on a light background (brand rule #2) */}
+        {/* Eyebrow kicker */}
+        <p
+          style={{
+            margin: "0 0 18px",
+            fontSize: "12px",
+            fontWeight: 800,
+            letterSpacing: "1.8px",
+            color: "#697278",
+          }}
+        >
+          PRIVATE BETA
+        </p>
+
+        {/* Brand row: wordmark + app-icon as ? punctuation — dark icon on light bg ✓ */}
         <div
           style={{
             display: "flex",
@@ -104,18 +115,16 @@ export default function Hero() {
             gap: "clamp(10px,2.6vw,16px)",
           }}
         >
-          {/* Wordmark wrapper controls flex behaviour */}
           <div style={{ flex: "1 1 auto", minWidth: 0, maxWidth: "450px" }}>
             <Image
               src="/brand/wordmark-words-only.png"
               alt="Do Ya Wanna"
-              width={900}
-              height={300}
+              width={1259}
+              height={131}
               priority
               style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
-          {/* App icon as the question-mark punctuation — dark icon on light bg ✓ */}
           <Image
             src="/brand/app-icon-512.png"
             alt="?"
@@ -137,9 +146,10 @@ export default function Hero() {
             lineHeight: 1.12,
             fontWeight: 800,
             letterSpacing: "-0.5px",
-          }}
+            textWrap: "pretty",
+          } as React.CSSProperties}
         >
-          One question. One tap. A real answer.
+          You already ask it. We&apos;re changing what happens next.
         </h1>
 
         <p
@@ -151,9 +161,8 @@ export default function Hero() {
             maxWidth: "46ch",
           }}
         >
-          A private, notification-first decision app for the people you already
-          know. Ask one person or a whole group — once, or on repeat. Free to
-          answer. No ads.
+          The simplest question in the world is becoming something completely
+          new. Join the private beta list and be among the first to find out.
         </p>
 
         {/* ── Form card ── */}
@@ -169,8 +178,10 @@ export default function Hero() {
           }}
         >
           {submitted ? (
-            /* Success state */
+            /* ── Success state ── */
             <div
+              role="status"
+              aria-live="polite"
               style={{
                 background: "#B8FF3D",
                 borderRadius: "14px",
@@ -195,12 +206,12 @@ export default function Hero() {
                   color: "#171B1E",
                 }}
               >
-                Thanks {successName} — your beta invite will land at{" "}
-                {successEmail}.
+                Thanks {successName} — we&apos;ll tell {successEmail} before we
+                tell everybody else.
               </p>
             </div>
           ) : (
-            /* Default form state */
+            /* ── Default form state ── */
             <div>
               {/* Kicker */}
               <div
@@ -212,6 +223,7 @@ export default function Hero() {
                 }}
               >
                 <span
+                  aria-hidden="true"
                   style={{
                     width: "10px",
                     height: "10px",
@@ -228,7 +240,7 @@ export default function Hero() {
                     letterSpacing: "1.6px",
                   }}
                 >
-                  BETA INVITES
+                  PRIVATE BETA LIST
                 </span>
               </div>
 
@@ -237,8 +249,12 @@ export default function Hero() {
                 noValidate
                 style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}
               >
-                {/* Honeypot — visually hidden, real users never fill this */}
+                {/* Honeypot — screen reader / real users never see this */}
+                <label className="sr-only" htmlFor="hp-field">
+                  Leave this blank
+                </label>
                 <input
+                  id="hp-field"
                   type="text"
                   name="_hp"
                   value={hp}
@@ -255,28 +271,43 @@ export default function Hero() {
                   }}
                 />
 
-                <input
-                  required
-                  type="text"
-                  name="name"
-                  autoComplete="given-name"
-                  placeholder="First name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  style={{ ...inputStyle, flex: "1 1 150px" }}
-                />
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{ ...inputStyle, flex: "1.4 1 190px" }}
-                />
+                <div style={{ flex: "1 1 150px", minWidth: 0 }}>
+                  <label className="sr-only" htmlFor="invite-name">
+                    First name
+                  </label>
+                  <input
+                    id="invite-name"
+                    required
+                    type="text"
+                    name="name"
+                    autoComplete="given-name"
+                    placeholder="First name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    style={inputStyle}
+                  />
+                </div>
+
+                <div style={{ flex: "1.4 1 190px", minWidth: 0 }}>
+                  <label className="sr-only" htmlFor="invite-email">
+                    Email address
+                  </label>
+                  <input
+                    id="invite-email"
+                    required
+                    type="email"
+                    name="email"
+                    autoComplete="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    style={inputStyle}
+                  />
+                </div>
+
                 <button
                   type="submit"
+                  id="invite-submit"
                   disabled={loading}
                   className="btn-lime"
                   style={{
@@ -291,11 +322,10 @@ export default function Hero() {
                     minHeight: "44px",
                   }}
                 >
-                  {loading ? "Sending…" : "Get a Beta Invite"}
+                  {loading ? "Sending…" : "I WANNA KNOW"}
                 </button>
               </form>
 
-              {/* Inline error — no alert() */}
               {error && (
                 <p
                   role="alert"
@@ -310,7 +340,7 @@ export default function Hero() {
                 </p>
               )}
 
-              {/* Platform line — Apple + Android equally, no store badges */}
+              {/* Platform microcopy */}
               <div
                 style={{
                   display: "flex",
@@ -323,7 +353,8 @@ export default function Hero() {
                 <AppleSVG />
                 <AndroidSVG />
                 <span style={{ fontSize: "13px" }}>
-                  Beta invitations are coming soon for iPhone and Android.
+                  Early access is coming to iPhone and Android. No spam—just the
+                  reveal.
                 </span>
               </div>
             </div>
@@ -331,7 +362,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Right column: phone demo ── */}
+      {/* ── Right column: teaser phone (zero interface) ── */}
       <div
         style={{
           display: "flex",

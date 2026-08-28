@@ -1,12 +1,13 @@
 import Image from "next/image";
 
-// PosterCTA — near-black (#0B0D0E) background
-// The bare lime question mark (question-mark-lime.png) is ALLOWED here
-// because this section has a dark background — per brand rules.
-// Never show it on light backgrounds.
+// PosterCTA — near-black (#0B0D0E) dark background
+// H2: DO YA WANNA KNOW FIRST? (text-transform: uppercase in CSS)
+// Body: Join the private beta list. We'll tell you before we tell everybody else.
+// Button: YES, I WANNA KNOW → #invite
+// Right: bare lime ? (question-mark-lime.png) — ALLOWED on dark background ✓
 export default function PosterCTA() {
   return (
-    <section style={{ background: "#0B0D0E" }}>
+    <section style={{ background: "#0B0D0E", borderTop: "1px solid #D9DDD5" }}>
       <div
         style={{
           maxWidth: "1160px",
@@ -30,9 +31,10 @@ export default function PosterCTA() {
               letterSpacing: "-1px",
               color: "#F7F8F4",
               textTransform: "uppercase",
-            }}
+              textWrap: "pretty",
+            } as React.CSSProperties}
           >
-            Do ya wanna be first?
+            Do ya wanna know first?
           </h2>
           <p
             style={{
@@ -43,8 +45,8 @@ export default function PosterCTA() {
               maxWidth: "44ch",
             }}
           >
-            Join the beta list for iPhone and Android. We&apos;ll ask you one
-            question when it&apos;s ready.
+            Join the private beta list. We&apos;ll tell you before we tell
+            everybody else.
           </p>
 
           {/* Platform icons — Apple + Android shown equally, no store badges */}
@@ -57,7 +59,7 @@ export default function PosterCTA() {
               color: "#D9DDD5",
             }}
           >
-            {/* Apple icon */}
+            {/* Apple */}
             <svg
               width="18"
               height="18"
@@ -68,7 +70,7 @@ export default function PosterCTA() {
             >
               <path d="M17.05 12.54c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.8 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.24 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.29-1.27 3.15-2.52.99-1.45 1.4-2.85 1.42-2.92-.03-.01-2.72-1.04-2.75-4.13zM14.46 4.9c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.28.69-3.02 1.56-.66.77-1.24 2-1.09 3.18 1.15.09 2.33-.58 3.04-1.45z" />
             </svg>
-            {/* Android icon */}
+            {/* Android */}
             <svg
               width="19"
               height="19"
@@ -92,6 +94,7 @@ export default function PosterCTA() {
 
           <a
             href="#invite"
+            id="poster-cta-btn"
             className="btn-lime"
             style={{
               display: "inline-flex",
@@ -106,11 +109,11 @@ export default function PosterCTA() {
               minHeight: "44px",
             }}
           >
-            YES, I WANNA JOIN
+            YES, I WANNA KNOW
           </a>
         </div>
 
-        {/* Bare lime ? — ALLOWED on this dark background only */}
+        {/* Bare lime ? — ALLOWED on this dark background only ✓ */}
         <div
           style={{
             display: "flex",
@@ -122,8 +125,8 @@ export default function PosterCTA() {
             src="/brand/question-mark-lime.png"
             alt=""
             aria-hidden="true"
-            width={230}
-            height={322}
+            width={119}
+            height={150}
             style={{
               height: "clamp(130px,26vw,230px)",
               width: "auto",

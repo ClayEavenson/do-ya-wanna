@@ -1,43 +1,46 @@
-// Server component
+// BetaProcess — white band
+// Kicker: PRIVATE BETA
+// H2: Be there when the question changes.
+// 4 numbered steps (36px lime squares) stacked vertically on mobile.
+
 const STEPS = [
   {
-    num: "1",
-    label: "ASK",
-    desc: "Send one Wanna — to one person or a named group.",
+    n: 1,
+    label: "JOIN",
+    body: "Put your name on the private beta list.",
   },
   {
-    num: "2",
-    label: "NOTIFY",
-    desc: "Deliver it now, schedule it for later, or set it to repeat.",
+    n: 2,
+    label: "STAY CLOSE",
+    body: "We'll share selected previews as launch approaches.",
   },
   {
-    num: "3",
-    label: "ANSWER",
-    desc: "Yes, No, Maybe, Let\u2019s Talk About It — plus one optional response the sender adds.",
+    n: 3,
+    label: "GET INVITED",
+    body: "Early members will receive access before the public release.",
   },
   {
-    num: "4",
-    label: "DECIDE",
-    desc: "See the result without chasing the group chat.",
+    n: 4,
+    label: "KNOW FIRST",
+    body: 'See what "Do Ya Wanna?" becomes before everyone else.',
   },
 ];
 
-export default function HowItWorks() {
+export default function BetaProcess() {
   return (
     <section
-      id="how"
       style={{
         background: "#FFFFFF",
         borderTop: "1px solid #D9DDD5",
         borderBottom: "1px solid #D9DDD5",
-        scrollMarginTop: "70px",
       }}
     >
       <div
         style={{
           maxWidth: "1160px",
           margin: "0 auto",
-          padding: "clamp(56px,10vw,88px) clamp(20px,4.5vw,32px)",
+          padding:
+            "clamp(56px,10vw,88px) clamp(20px,4.5vw,32px)",
         }}
       >
         <p
@@ -49,7 +52,7 @@ export default function HowItWorks() {
             color: "#697278",
           }}
         >
-          HOW IT WORKS
+          PRIVATE BETA
         </p>
         <h2
           style={{
@@ -57,12 +60,12 @@ export default function HowItWorks() {
             fontSize: "clamp(26px,6.4vw,34px)",
             fontWeight: 900,
             letterSpacing: "-0.5px",
-          }}
+            textWrap: "pretty",
+          } as React.CSSProperties}
         >
-          One question becomes an answer.
+          Be there when the question changes.
         </h2>
 
-        {/* Steps — stacks vertically on mobile, 4-col on desktop */}
         <div
           style={{
             display: "grid",
@@ -71,12 +74,17 @@ export default function HowItWorks() {
             gap: "clamp(20px,4vw,28px)",
           }}
         >
-          {STEPS.map((step) => (
+          {STEPS.map(({ n, label, body }) => (
             <div
-              key={step.num}
-              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+              key={n}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+              }}
             >
               <span
+                aria-hidden="true"
                 style={{
                   width: "36px",
                   height: "36px",
@@ -91,17 +99,16 @@ export default function HowItWorks() {
                   flexShrink: 0,
                 }}
               >
-                {step.num}
+                {n}
               </span>
               <span
                 style={{
                   fontSize: "16px",
                   fontWeight: 800,
                   letterSpacing: "0.8px",
-                  color: "#171B1E",
                 }}
               >
-                {step.label}
+                {label}
               </span>
               <p
                 style={{
@@ -111,7 +118,7 @@ export default function HowItWorks() {
                   color: "#697278",
                 }}
               >
-                {step.desc}
+                {body}
               </p>
             </div>
           ))}

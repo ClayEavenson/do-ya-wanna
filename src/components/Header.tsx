@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-// Header uses app-icon-512.png (dark rounded-square icon).
-// Never the bare lime question mark or a wordmark here — per brand rules.
 export default function Header() {
   return (
     <header
@@ -17,13 +15,12 @@ export default function Header() {
         style={{
           maxWidth: "1160px",
           margin: "0 auto",
-          padding: "12px clamp(16px, 4vw, 32px)",
+          padding: "12px clamp(16px,4vw,32px)",
           display: "flex",
           alignItems: "center",
           gap: "10px",
         }}
       >
-        {/* App icon in header — dark icon on light bg ✓ */}
         <Image
           src="/brand/app-icon-512.png"
           alt="Do Ya Wanna?"
@@ -34,7 +31,7 @@ export default function Header() {
         />
         <span
           style={{
-            fontSize: "clamp(15px, 4vw, 17px)",
+            fontSize: "clamp(15px,4vw,17px)",
             fontWeight: 800,
             letterSpacing: "-0.2px",
             whiteSpace: "nowrap",
@@ -44,10 +41,11 @@ export default function Header() {
         </span>
         <a
           href="#invite"
+          id="header-cta"
           className="btn-dark"
           style={{
             marginLeft: "auto",
-            fontSize: "clamp(13px, 3.4vw, 14px)",
+            fontSize: "clamp(13px,3.4vw,14px)",
             fontWeight: 800,
             textDecoration: "none",
             background: "#171B1E",
@@ -55,12 +53,12 @@ export default function Header() {
             padding: "11px 16px",
             borderRadius: "12px",
             whiteSpace: "nowrap",
-            display: "flex",
-            alignItems: "center",
             minHeight: "44px",
+            display: "inline-flex",
+            alignItems: "center",
           }}
         >
-          Get a Beta Invite
+          Get Early Access
         </a>
       </div>
     </header>

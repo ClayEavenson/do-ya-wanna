@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Reset & base ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f7f8f4;
+  color: #171b1e;
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #171b1e;
+}
+
+a:hover {
+  color: #697278;
+}
+
+/* ── Brand interactions ── */
+::selection {
+  background: #b8ff3d;
+  color: #171b1e;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9aa29f;
+}
+
+:focus-visible {
+  outline: 2px solid #171b1e;
+  outline-offset: 2px;
+}
+
+/* ── Header nav CTA ── */
+.btn-dark {
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn-dark:hover {
+  background: #0b0d0e !important;
+  color: #b8ff3d !important;
+}
+.btn-dark:active {
+  transform: translateY(1px);
+}
+
+/* ── Lime action buttons (form submit, poster CTA) ── */
+.btn-lime {
+  transition: background 0.15s ease;
+}
+.btn-lime:hover {
+  background: #a9ef2c !important;
+}
+.btn-lime:active {
+  transform: translateY(1px);
+}
+
+/* ── Privacy toggle inactive button hover ── */
+.toggle-inactive:hover {
+  color: #171b1e !important;
+}
+
+/* ── Use-case marquee animations ── */
+@keyframes dyw-marq {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dyw-marq2 {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Pause on hover — accessibility */
+.marquee-row:hover {
+  animation-play-state: paused;
+}

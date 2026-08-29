@@ -52,9 +52,9 @@ export default function WhyThis() {
             maxWidth: "46ch",
           }}
         >
-          We noticed something about a question nearly everyone asks. It was
-          simple, familiar, and far more powerful than it looked. So we started
-          building.
+          We noticed something about the simple questions people ask every day.
+          They were familiar, effortless, and far more powerful than they looked.
+          So we started building.
         </p>
       </div>
 

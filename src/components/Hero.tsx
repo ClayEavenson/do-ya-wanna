@@ -149,7 +149,7 @@ export default function Hero() {
             textWrap: "pretty",
           } as React.CSSProperties}
         >
-          You already ask it. We&apos;re changing what happens next.
+          You ask simple questions. We&apos;re changing what happens next.
         </h1>
 
         <p
@@ -161,8 +161,9 @@ export default function Hero() {
             maxWidth: "46ch",
           }}
         >
-          The simplest question in the world is becoming something completely
-          new. Join the private beta list and be among the first to find out.
+          Simple questions are part of everyday life. Get ready for simple
+          replies—and something completely new. Join the private beta list and
+          be among the first to know.
         </p>
 
         {/* ── Form card ── */}

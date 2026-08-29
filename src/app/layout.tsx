@@ -16,14 +16,14 @@ const OG_IMAGE = `${SITE_URL}/og/do-ya-wanna-teaser-v1.png`;
 // ── Copy ──────────────────────────────────────────────────────────────────────
 // Standard SEO description (longer — used for <meta name="description">)
 const SEO_DESCRIPTION =
-  "The simplest question in the world is becoming something completely new. Join the private beta list and be among the first to find out.";
+  "You ask simple questions every day. We're creating something new to make what happens next a whole lot simpler.";
 
 // Social description — ≤125 characters, used for og:description and twitter:description
 const SOCIAL_DESCRIPTION =
-  "Four familiar words are becoming something completely new. Join the private beta list and be among the first to know.";
+  "You ask simple questions every day. We're changing what happens next. Join the private beta.";
 
-const TITLE = "Do Ya Wanna? — You already ask it.";
-const IMAGE_ALT = "Do Ya Wanna? — Something new is coming.";
+const TITLE = "Do Ya Wanna? — We're Changing What Happens Next.";
+const IMAGE_ALT = "Do Ya Wanna? — We're changing what happens next.";
 
 // ── Metadata export ───────────────────────────────────────────────────────────
 export const metadata: Metadata = {

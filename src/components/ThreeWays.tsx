@@ -13,7 +13,7 @@ const CARDS = [
   },
   {
     tag: "NOW WATCH WHAT HAPPENS",
-    body: "We're turning four familiar words into something new.",
+    body: "We're making simple questions part of something new.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function FourWords() {
             letterSpacing: "-0.5px",
           }}
         >
-          You already know the question.
+          Simple questions, every day.
         </h2>
         <p
           style={{
@@ -65,9 +65,9 @@ export default function FourWords() {
             maxWidth: "56ch",
           }}
         >
-          You&apos;ve said it. You&apos;ve texted it. You&apos;ve heard it more
-          times than you can count. Now those four familiar words are about to
-          become something entirely new.
+          You&apos;ve asked them. You&apos;ve answered them. You ask simple
+          questions every single day. Get ready for simple replies—and
+          something completely new.
         </p>
 
         <div

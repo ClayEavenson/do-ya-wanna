@@ -9,28 +9,68 @@ const archivo = Archivo({
   variable: "--font-archivo",
 });
 
-const TITLE = "Do Ya Wanna? — You already ask it.";
-const DESCRIPTION =
+// ── URLs ──────────────────────────────────────────────────────────────────────
+const SITE_URL = "https://www.doyawanna.app";
+const OG_IMAGE = `${SITE_URL}/og/do-ya-wanna-teaser-v1.png`;
+
+// ── Copy ──────────────────────────────────────────────────────────────────────
+// Standard SEO description (longer — used for <meta name="description">)
+const SEO_DESCRIPTION =
   "The simplest question in the world is becoming something completely new. Join the private beta list and be among the first to find out.";
 
+// Social description — ≤125 characters, used for og:description and twitter:description
+const SOCIAL_DESCRIPTION =
+  "Four familiar words are becoming something completely new. Join the private beta list and be among the first to know.";
+
+const TITLE = "Do Ya Wanna? — You already ask it.";
+const IMAGE_ALT = "Do Ya Wanna? — Something new is coming.";
+
+// ── Metadata export ───────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-  ),
+  // Hard-coded production base URL — eliminates localhost leaking into social tags
+  metadataBase: new URL(SITE_URL),
+
   title: TITLE,
-  description: DESCRIPTION,
+  description: SEO_DESCRIPTION,
+
+  // Canonical URL
+  alternates: {
+    canonical: `${SITE_URL}/`,
+  },
+
+  // Open Graph
   openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [{ url: "/brand/app-icon-512.png", width: 512, height: 512 }],
     type: "website",
-  },
-  twitter: {
-    card: "summary",
+    siteName: "Do Ya Wanna?",
+    url: `${SITE_URL}/`,
     title: TITLE,
-    description: DESCRIPTION,
-    images: ["/brand/app-icon-512.png"],
+    description: SOCIAL_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: IMAGE_ALT,
+      },
+    ],
   },
+
+  // X / Twitter
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: SOCIAL_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE,
+        alt: IMAGE_ALT,
+      },
+    ],
+    // No twitter:site or twitter:creator — no username to supply
+  },
+
+  // Favicon / touch icon (unchanged)
   icons: {
     icon: "/brand/app-icon-512.png",
     apple: "/brand/app-icon-512.png",

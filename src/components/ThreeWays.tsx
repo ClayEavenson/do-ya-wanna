@@ -1,5 +1,5 @@
-// FourWords — white band (alternating section)
-// Kicker: FOUR WORDS. ENDLESS POSSIBILITIES.
+// SimpleQuestions — white band (alternating section)
+// Kicker: SIMPLE QUESTIONS. EVERY DAY.
 // No specific activities, use cases, or product mechanics.
 
 const CARDS = [
@@ -17,7 +17,7 @@ const CARDS = [
   },
 ];
 
-export default function FourWords() {
+export default function SimpleQuestions() {
   return (
     <section
       style={{
@@ -43,7 +43,7 @@ export default function FourWords() {
             color: "#697278",
           }}
         >
-          FOUR WORDS. ENDLESS POSSIBILITIES.
+          SIMPLE QUESTIONS. EVERY DAY.
         </p>
         <h2
           style={{

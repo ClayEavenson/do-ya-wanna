@@ -1,44 +1,6 @@
 import Image from "next/image";
 
-/**
- * IPhoneProFrame — CSS-built iPhone Pro portrait mockup.
- *
- * Proportions: ~19.5:9 screen ratio (iPhone 15 Pro: 393×852pt logical).
- * Hardware: titanium/graphite outer frame, thin black bezel, Dynamic Island,
- * status bar (time left, indicators right), side buttons (volume+action left,
- * power right), home indicator pill.
- *
- * SECRECY RULE: screen content is teaser-only — logo + lime ? + two text lines.
- * No interface elements, no buttons, no questions, no product mechanics.
- */
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-/** 3-bar cellular signal icon */
-const CellIcon = () => (
-  <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor" aria-hidden="true">
-    <rect x="0"   y="8"  width="3.5" height="4"   rx="0.6" />
-    <rect x="4.5" y="5"  width="3.5" height="7"   rx="0.6" />
-    <rect x="9"   y="2"  width="3.5" height="10"  rx="0.6" />
-    <rect x="13.5" y="0" width="3.5" height="12"  rx="0.6" opacity="0.35" />
-  </svg>
-);
-
-/** Wi-Fi icon */
-const WifiIcon = () => (
-  <svg width="16" height="12" viewBox="0 0 24 18" fill="currentColor" aria-hidden="true">
-    <path d="M12 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0-4.5c1.9 0 3.6.7 4.9 1.9l1.4-1.4A9.5 9.5 0 0012 7.5a9.5 9.5 0 00-6.3 2.4l1.4 1.4A7.3 7.3 0 0112 9.5zm0-5c3 0 5.7 1.1 7.8 3l1.4-1.4A13 13 0 0012 2.5a13 13 0 00-9.2 3.6l1.4 1.4C6.3 5.6 9 4.5 12 4.5z" />
-  </svg>
-);
-
-/** Battery icon with nub */
-const BatteryIcon = () => (
-  <svg width="27" height="13" viewBox="0 0 27 13" fill="none" aria-hidden="true">
-    <rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="currentColor" strokeOpacity="0.35" />
-    <rect x="2" y="2" width="18" height="9" rx="2" fill="currentColor" />
-    <path d="M24.5 4.5v4a2 2 0 000-4z" fill="currentColor" fillOpacity="0.4" />
-  </svg>
-);
+/** Real iPhone app capture, displayed in the existing portrait hardware frame. */
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function PhoneDemo() {
@@ -97,7 +59,7 @@ export default function PhoneDemo() {
        * interior to simulate titanium brushed-metal depth without being glossy.
        */}
       <div
-        aria-label="App teaser: Do Ya Wanna? — Something new is coming."
+        aria-label="Wanna app: active invitations, replies and organizer headcounts"
         role="img"
         style={{
           width: "100%",
@@ -138,157 +100,14 @@ export default function PhoneDemo() {
             boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07)",
           }}
         >
-          {/*
-           * ── Status bar row ──
-           * Time on the left, Dynamic Island centered, icons on the right.
-           * Implemented as a 3-column grid so the DI stays truly centred.
-           */}
-          <div
-            aria-hidden="true"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr auto 1fr",
-              alignItems: "flex-end",
-              padding: "12px 18px 6px",
-              color: "#F7F8F4",
-            }}
-          >
-            {/* Time — left */}
-            <span
-              style={{
-                fontSize: "13px",
-                fontWeight: 600,
-                letterSpacing: "-0.2px",
-                lineHeight: 1,
-              }}
-            >
-              9:30
-            </span>
-
-            {/* Dynamic Island — center pill */}
-            <div
-              style={{
-                width: "clamp(88px, 28%, 108px)",
-                height: "clamp(28px, 9%, 34px)",
-                background: "#000000",
-                borderRadius: "999px",
-                marginTop: "-10px",    // pull up into the bezel top
-                boxShadow: "0 2px 6px rgba(0,0,0,0.8)",
-              }}
-            />
-
-            {/* Status icons — right */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                gap: "5px",
-                lineHeight: 1,
-              }}
-            >
-              <CellIcon />
-              <WifiIcon />
-              <BatteryIcon />
-            </div>
-          </div>
-
-          {/* ── Teaser screen content — vertically centered in remaining space ── */}
-          <div
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "clamp(16px, 4vw, 22px)",
-              padding: "16px 24px",
-              textAlign: "center",
-              boxSizing: "border-box",
-            }}
-          >
-            {/* Brand row: app icon + name */}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <Image
-                src="/brand/app-icon-512.png"
-                alt=""
-                aria-hidden="true"
-                width={26}
-                height={26}
-                style={{ borderRadius: "6px" }}
-              />
-              <span
-                style={{
-                  fontSize: "clamp(13px, 3.5vw, 16px)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.2px",
-                  color: "#F7F8F4",
-                }}
-              >
-                Do Ya Wanna?
-              </span>
-            </div>
-
-            {/* Bare lime ? — ALLOWED on dark background ✓ */}
-            <Image
-              src="/brand/question-mark-lime.png"
-              alt="?"
-              width={119}
-              height={150}
-              style={{
-                height: "clamp(110px, 20vw, 160px)",
-                width: "auto",
-                display: "block",
-              }}
-            />
-
-            {/* Teaser copy — NO mechanics, NO interface */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "clamp(15px, 4vw, 18px)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.2px",
-                  color: "#F7F8F4",
-                  lineHeight: 1.2,
-                }}
-              >
-                Something new is coming.
-              </p>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "clamp(11px, 3vw, 13px)",
-                  fontWeight: 500,
-                  color: "#9AA29F",
-                  lineHeight: 1.4,
-                }}
-              >
-                Private beta access opens soon.
-              </p>
-            </div>
-          </div>
-
-          {/* ── Home indicator pill ── */}
-          <div
-            aria-hidden="true"
-            style={{
-              padding: "8px 0 14px",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                width: "36%",
-                height: "4px",
-                background: "#F7F8F4",
-                borderRadius: "999px",
-                opacity: 0.3,
-              }}
-            />
-          </div>
+          <Image
+            src="/screenshots/wanna-active-iphone.png"
+            alt="Wanna on iPhone showing a fishing invitation with its date, time and a headcount of two, including the sender"
+            fill
+            sizes="310px"
+            preload
+            style={{ objectFit: "contain", background: "#F7F8F4" }}
+          />
         </div>
       </div>
     </div>

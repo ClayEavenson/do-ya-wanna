@@ -1,12 +1,7 @@
-// Trust — white band (BUILT WITH INTENTION)
-// Kicker: BUILT WITH INTENTION
-// H2: Quiet for now. Worth the wait.
-// Bullets: 4 lime-square items — no privacy toggle, no notification preview
-
 const BULLETS = [
-  "Limited early access",
-  "Updates only when they matter",
-  "No spam or unnecessary noise",
+  "Private or shared results",
+  "Invitation and reply notifications",
+  "Saved Wannas and send schedules",
   "Built for iPhone and Android",
 ];
 
@@ -52,7 +47,7 @@ export default function Trust() {
               letterSpacing: "-0.5px",
             }}
           >
-            Quiet for now. Worth the wait.
+            Simple to ask. Easy to keep track.
           </h2>
           <p
             style={{
@@ -63,9 +58,9 @@ export default function Trust() {
               maxWidth: "46ch",
             }}
           >
-            We&apos;re keeping the details close while we build something
-            remarkably simple. Private beta members will be the first to see
-            what&apos;s coming.
+            Keep active invitations, sent Wannas and archived plans organized.
+            Check invitation and reply updates in the notification center,
+            and choose private results when answers are just for you.
           </p>
         </div>
 

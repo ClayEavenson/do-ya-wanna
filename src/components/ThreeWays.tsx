@@ -1,19 +1,15 @@
-// SimpleQuestions — white band (alternating section)
-// Kicker: SIMPLE QUESTIONS. EVERY DAY.
-// No specific activities, use cases, or product mechanics.
-
 const CARDS = [
   {
-    tag: "YOU'VE SAID IT",
-    body: "Probably more times than you realize.",
+    tag: "ASK YOUR PEOPLE",
+    body: "Send a Wanna to a person or group. Add a date, time or place when the plan needs it.",
   },
   {
-    tag: "YOU'VE HEARD IT",
-    body: "And you already know exactly what it means.",
+    tag: "GET CLEAR REPLIES",
+    body: "Yes, No, Maybe or Let’s Talk. See who has answered and who is still deciding.",
   },
   {
-    tag: "NOW WATCH WHAT HAPPENS",
-    body: "We're making simple questions part of something new.",
+    tag: "KNOW WHO’S IN",
+    body: "Keep the headcount in view, including the organizer. Set a capacity when spaces are limited.",
   },
 ];
 
@@ -65,9 +61,9 @@ export default function SimpleQuestions() {
             maxWidth: "56ch",
           }}
         >
-          You&apos;ve asked them. You&apos;ve answered them. You ask simple
-          questions every single day. Get ready for simple replies—and
-          something completely new.
+          Dinner tonight? A weekend get-together? Ask once and keep the answers
+          together. Save the Wannas you use often, then send them again or
+          schedule a one-time or recurring send.
         </p>
 
         <div

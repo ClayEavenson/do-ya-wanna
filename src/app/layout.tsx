@@ -16,13 +16,13 @@ const OG_IMAGE = `${SITE_URL}/og/do-ya-wanna-teaser-v1.png`;
 // ── Copy ──────────────────────────────────────────────────────────────────────
 // Standard SEO description (longer — used for <meta name="description">)
 const SEO_DESCRIPTION =
-  "You ask simple questions every day. We're creating something new to make what happens next a whole lot simpler.";
+  "Wanna brings simple invitations, quick RSVPs and clear headcounts together. Ask your people, see who’s in, and plan without endless group texts.";
 
 // Social description — ≤125 characters, used for og:description and twitter:description
 const SOCIAL_DESCRIPTION =
-  "You ask simple questions every day. We're changing what happens next. Join the private beta.";
+  "Simple invitations. Quick RSVPs. Clear headcounts. Meet Wanna for iPhone and Android. Join the private beta.";
 
-const TITLE = "Do Ya Wanna? — We're Changing What Happens Next.";
+const TITLE = "Do Ya Wanna? — Simple Questions. Clear Headcounts.";
 const IMAGE_ALT = "Do Ya Wanna? — We're changing what happens next.";
 
 // ── Metadata export ───────────────────────────────────────────────────────────

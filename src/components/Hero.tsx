@@ -149,7 +149,7 @@ export default function Hero() {
             textWrap: "pretty",
           } as React.CSSProperties}
         >
-          You ask simple questions. We&apos;re changing what happens next.
+          Simple questions. Simple replies. A clear headcount.
         </h1>
 
         <p
@@ -161,9 +161,9 @@ export default function Hero() {
             maxWidth: "46ch",
           }}
         >
-          Simple questions are part of everyday life. Get ready for simple
-          replies—and something completely new. Join the private beta list and
-          be among the first to know.
+          Ask your people, see who&apos;s in, and get on with the plan. Wanna
+          brings invitations, quick RSVPs and headcounts together without
+          endless group texts. Join the private beta list.
         </p>
 
         {/* ── Form card ── */}
@@ -354,8 +354,8 @@ export default function Hero() {
                 <AppleSVG />
                 <AndroidSVG />
                 <span style={{ fontSize: "13px" }}>
-                  Early access is coming to iPhone and Android. No spam—just the
-                  reveal.
+                  Private beta for iPhone and Android. Updates about access,
+                  without the noise.
                 </span>
               </div>
             </div>
@@ -363,7 +363,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Right column: teaser phone (zero interface) ── */}
+      {/* ── Right column: real app capture in the existing phone frame ── */}
       <div
         style={{
           display: "flex",

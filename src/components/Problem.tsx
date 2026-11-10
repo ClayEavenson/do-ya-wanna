@@ -1,8 +1,3 @@
-// WhyThis — soft-white band (default bg)
-// Kicker: WHY THIS?
-// Right col: minimal white teaser card — lock icon + "DO YA WANNA?" + "You'll know soon."
-// No functionality shown.
-
 export default function WhyThis() {
   return (
     <section
@@ -41,7 +36,7 @@ export default function WhyThis() {
             textWrap: "pretty",
           } as React.CSSProperties}
         >
-          Some ideas are hiding in plain sight.
+          One question should not take a hundred texts.
         </h2>
         <p
           style={{
@@ -52,9 +47,9 @@ export default function WhyThis() {
             maxWidth: "46ch",
           }}
         >
-          We noticed something about the simple questions people ask every day.
-          They were familiar, effortless, and far more powerful than they looked.
-          So we started building.
+          Wanna keeps the invitation, replies and headcount together. Connect
+          with people through an invitation, keep favorites and groups close,
+          and choose who sees the answers.
         </p>
       </div>
 
@@ -107,7 +102,7 @@ export default function WhyThis() {
               color: "#697278",
             }}
           >
-            You&apos;ll know soon.
+            Your people. Their answers. One clear plan.
           </p>
         </div>
       </div>
